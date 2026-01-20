@@ -1,0 +1,40 @@
+[project]
+name = "calibre-annas-archive"
+version = "0.2.4"
+description = "The world's largest open-source open-data library."
+authors = [{ name = "ScottBot10" }]
+requires-python = ">=3.8"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.1.0",
+    "PyQt6>=6.0.0",
+    "lxml>=4.9.0",
+    "PyQt5>=5.15.0",
+    "PyQt5-stubs>=5.15.0",
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 120
+target-version = "py38"
+
+[tool.ruff.lint]
+select = ["E", "F", "B"]
+ignore = [
+    "E501", # Line too long
+    "B905", # zip() strict= (Python 3.10+)
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Ignore import errors for calibre and qt modules if they aren't available in dev environment
+"*.py" = []
+# Ignore undefined name errors for Calibre builtins (_, load_translations) in config.py
+"config.py" = ["F821"]
