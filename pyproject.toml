@@ -1,6 +1,6 @@
 [project]
 name = "calibre-annas-archive"
-version = "0.2.4"
+version = "0.3.0"
 description = "The world's largest open-source open-data library."
 authors = [{ name = "ScottBot10" }]
 requires-python = ">=3.8"

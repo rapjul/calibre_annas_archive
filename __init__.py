@@ -11,7 +11,7 @@ class AnnasArchiveStore(StoreBase):  # type: ignore
     description: str = "The world's largest open-source open-data library."
     supported_platforms: list[str] = ["windows", "osx", "linux"]
     author: str = "ScottBot10"
-    version: tuple[int, int, int] = (0, 2, 5)
+    version: tuple[int, int, int] = (0, 3, 0)
     minimum_calibre_version: tuple[int, int, int] = (5, 0, 0)
     formats: list[str] = [
         "EPUB",

@@ -280,4 +280,5 @@ _*/
 # Local artifacts
 calibre-debug-log.txt
 *.zip
+!calibre_annas_archive-v*.zip
 .chatledger/
