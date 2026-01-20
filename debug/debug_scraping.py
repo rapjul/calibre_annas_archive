@@ -13,6 +13,7 @@ from calibre.gui2.store.search_result import SearchResult
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from annas_archive import AnnasArchiveStore
+from constants import DEFAULT_MIRRORS
 
 
 def main():
@@ -23,7 +24,12 @@ def main():
     store = AnnasArchiveStore(gui, "Anna's Archive")
 
     # Configure the plugin (optional, set mirrors if needed)
-    # store.config["mirrors"] = ["https://annas-archive.org"]
+    current_mirrors = store.config.get("mirrors", DEFAULT_MIRRORS)
+    if current_mirrors == ["https://this.mirror.does.not.exist.at.all"]:
+        print("WARNING: Corrupted mirror config detected. Resetting to defaults.")
+        store.config["mirrors"] = DEFAULT_MIRRORS
+
+    print(f"Current Mirrors: {store.config.get('mirrors', DEFAULT_MIRRORS)}")
 
     # Ensure circuit breaker is disabled for debugging
     store.config["circuit_breaker"] = False

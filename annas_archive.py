@@ -87,8 +87,9 @@ class AnnasArchiveStore(StorePlugin):
                             content = resp.read()
                             doc = html.fromstring(content)
                             break
-                except Exception:
+                except Exception as e:
                     # Try next mirror
+                    print(f"Failed to connect to {mirror}: {e}")
                     pass
             if doc is None:
                 self.working_mirror = None
